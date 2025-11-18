@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ishan Jain | Chartered Accountant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Cormorant Garamond', 'serif'],
+            },
+            colors: {
+              stone: {
+                50: '#fafaf9',
+                100: '#f5f5f4',
+                200: '#e7e5e4',
+                300: '#d6d3d1',
+                800: '#292524',
+                900: '#1c1917',
+              },
+              paper: '#fdfbf7',
+            },
+            animation: {
+              'float': 'float 20s ease-in-out infinite',
+              'float-delayed': 'float 25s ease-in-out infinite reverse',
+              'float-slow': 'float 30s ease-in-out infinite',
+              'float-slower': 'float 35s ease-in-out infinite reverse',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translate(0, 0) rotate(0deg)' },
+                '50%': { transform: 'translate(-20px, 20px) rotate(5deg)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #fdfbf7;
+        color: #1c1917;
+        overflow-x: hidden;
+      }
+      
+      /* Noise Texture Overlay */
+      .bg-noise {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.03;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E");
+      }
+
+      /* Subtle Grid Pattern */
+      .bg-grid {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+        background-size: 100px 100px;
+        background-image:
+          linear-gradient(to right, rgba(28, 25, 23, 0.03) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(28, 25, 23, 0.03) 1px, transparent 1px);
+        mask-image: radial-gradient(circle at center, black, transparent 80%);
+        -webkit-mask-image: radial-gradient(circle at center, black, transparent 80%);
+      }
+
+      /* Chess Piece Styles */
+      .chess-bg {
+        position: fixed;
+        z-index: -2;
+        opacity: 0.04;
+        color: #1c1917;
+        pointer-events: none;
+      }
+
+      .chess-bg-knight { top: -5%; right: -10%; width: 50vw; height: 50vw; }
+      .chess-bg-king { bottom: -10%; left: -10%; width: 60vw; height: 60vw; }
+      .chess-bg-rook { top: 10%; left: -5%; width: 40vw; height: 40vw; }
+      .chess-bg-bishop { bottom: 20%; right: -5%; width: 45vw; height: 45vw; }
+      .chess-bg-pawn { top: 40%; left: 40%; width: 20vw; height: 20vw; opacity: 0.02; }
+
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.24",
+    "chess.js": "https://esm.sh/chess.js@1.0.0-beta.8",
+    "react-chessboard": "https://esm.sh/react-chessboard@4.7.2?external=react,react-dom"
+  }
+}
+</script>
+</head>
+  <body>
+    <div class="bg-noise"></div>
+    <div class="bg-grid"></div>
+    
+    <!-- Knight -->
+    <div class="chess-bg chess-bg-knight animate-float">
+        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.5">
+             <path d="M25,80 L75,80 M30,80 L30,75 L70,75 L70,80 M35,75 L35,65 C35,65 30,60 30,50 C30,35 40,20 50,15 C50,15 55,10 65,15 C65,15 70,20 70,35 L65,35 C65,35 65,25 55,25 C55,25 50,30 50,40 L55,45 L65,40 L70,45 C70,45 75,55 70,65 L65,65 L65,75" />
+        </svg>
+    </div>
+
+    <!-- King -->
+    <div class="chess-bg chess-bg-king animate-float-delayed">
+        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.5">
+            <path d="M45,15 L55,15 M50,10 L50,20 M35,35 L65,35 L60,25 L40,25 Z M35,35 L65,35 L70,70 L30,70 Z M25,75 L75,75 M25,75 L25,85 L75,85 L75,75" />
+        </svg>
+    </div>
+
+    <!-- Rook -->
+    <div class="chess-bg chess-bg-rook animate-float-slow">
+        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.5">
+            <path d="M25,85 L75,85 L75,75 L25,75 Z M30,75 L70,75 L65,35 L35,35 Z M25,35 L75,35 L75,20 L63,20 L63,28 L52,28 L52,20 L48,20 L48,28 L37,28 L37,20 L25,20 Z" />
+        </svg>
+    </div>
+
+    <!-- Bishop -->
+    <div class="chess-bg chess-bg-bishop animate-float-slower">
+        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.5">
+             <path d="M40,35 C40,25 50,15 50,15 C50,15 60,25 60,35 C60,45 55,50 50,55 C45,50 40,45 40,35 M50,10 L50,15 M47,12 L53,12 M35,55 L65,55 L60,80 L40,80 Z M30,80 L70,80 L70,85 L30,85 Z" />
+        </svg>
+    </div>
+
+    <!-- Pawn -->
+    <div class="chess-bg chess-bg-pawn animate-float">
+        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.5">
+            <path d="M40,35 C40,30 45,25 50,25 C55,25 60,30 60,35 C60,40 55,45 50,45 C45,45 40,40 40,35 M40,45 L60,45 L55,70 L45,70 Z M35,70 L65,70 L65,80 L35,80 Z" />
+        </svg>
+    </div>
+
+    <div id="root" class="relative z-10"></div>
+  </body>
+</html>
